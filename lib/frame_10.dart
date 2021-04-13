@@ -3,16 +3,22 @@ import 'package:flutter/material.dart';
 import './hoot_app_bar.dart';
 import './cloud_background.dart';
 import './Constants.dart' as Constants;
+import './Models/Book.dart';
 
 class Frame_10 extends StatelessWidget {
-  // This widget is the root of your application.
+  Book book = Book(
+    title: 'I Can Too: Dyslexic Heroes',
+    author: 'James E Gentry',
+    curator: 'Curator Dude',
+    illustrator: 'Illustrator Dude',
+    summary:
+        'Book description paragraph: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Porttitor massa id neque aliquam vestibulum morbi blandit cursus. Cras pulvinar mattis nunc sed blandit libero volutpat.',
+    coverUrl:
+        'https://firebasestorage.googleapis.com/v0/b/gentry-publishing-app.appspot.com/o/books%2FI%20Can%20Too%20-%20Dyslexic%20Heroes_1599163253736%2Fcover_image.png?alt=media&token=a00b80bf-e404-4c40-bd2a-600fbca81780',
+  );
+
   @override
   Widget build(BuildContext context) {
-    //screen dimension inquiry
-    double screen_width = MediaQuery.of(context).size.width;
-    double screen_height = MediaQuery.of(context).size.height;
-    var padding = MediaQuery.of(context).padding;
-    double height2 = screen_height - padding.top;
 
     return MaterialApp(
       home: Scaffold(
@@ -25,123 +31,89 @@ class Frame_10 extends StatelessWidget {
             ),
             //second stack item, primary box thing
             Center(
-              child: SizedBox(
-                //width: 800,
-                width: Constants.Constants.mainBoxWidth,
-                height: Constants.Constants.mainBoxHeight,
-                child: Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        bottomLeft:
-                            Radius.circular(Constants.Constants.cornerRad),
-                        topLeft: Radius.circular(Constants.Constants.cornerRad),
-                      ),
-                      color: Colors.white,
-                      border: Border.all(color: Colors.black, width: 0.5)),
-                  child: Row(
-                      //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              child: Container(
+                height: MediaQuery.of(context).size.height * .6,
+                width: MediaQuery.of(context).size.width * .75,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      bottomLeft:
+                          Radius.circular(Constants.Constants.cornerRad),
+                      topLeft:
+                          Radius.circular(Constants.Constants.cornerRad),
+                    ),
+                    color: Colors.white,
+                    border: Border.all(color: Colors.black, width: 0.5)),
+
+
+                child: Row(
                       children: [
-                        //ConstrainedBox(
-                        // constraints: BoxConstraints.tightFor(
-                        //    height: (2300), width: Constants.Constants.mainBoxHeight),
-                        Container(
-                          //picturebutton start
-                          //padding: const EdgeInsets.all(0),
-                          height: Constants.Constants.mainBoxHeight,
-                          width: Constants.Constants.mainBoxHeight, //square
-                          child: ElevatedButton(
-                            onPressed: () {},
-                            style: ElevatedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(
-                                      Constants.Constants.cornerRad)),
-                            ),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(
-                                  Constants.Constants.cornerRad),
-                              child: Container(
-                                padding: const EdgeInsets.all(0),
-                                child: Image.asset('test_book_cover.png'),
-                              ),
-                            ),
+                        
+                        Expanded(
+                                                  child: ClipRRect(
+                            borderRadius: BorderRadius.circular(
+                                Constants.Constants.cornerRad),
+                            child: Image.network(book.coverUrl),
                           ),
                         ),
-                        //picturebutton end
-                        //spacer row item? use size config here somehow
-                        SizedBox(
-                          height: 110,
-                          width: 50,
-                        ),
+       // Spacer(),
+                
                         //right hand side
                         Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            SizedBox(
-                              height: 100,
-                              width: 400,
-                              child: Align(
-                                  alignment: Alignment.centerLeft,
-                                  child: Text("Book Title",
-                                      style: TextStyle(
-                                          fontSize:
-                                              Constants.Constants.textSize1))),
-                            ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                SizedBox(
-                                  width: 400,
-                                  child: Text(
-                                      'Book description paragraph: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Porttitor massa id neque aliquam vestibulum morbi blandit cursus. Cras pulvinar mattis nunc sed blandit libero volutpat.'),
-                                ),
-                                //Expanded(child: Container(color: Colors.amber, width: 400)),
-                                SizedBox(
-                                    height:
-                                        205), //Lathe said something about custom size config, that should go here
-                                //to make the space between the paragraph and credits adaptive to different paragraph sizes
+                        Text(book.title,
+                    style: TextStyle(
+                        fontSize: Constants
+                            .Constants.textSize1),),
+                            
+                
+                            Text(book.summary),
+                           // Spacer(),
+                          
+                                
+                                
+                                
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Column(
-                                      children: [
-                                        Text('credits 1'),
-                                        Text('credits 2'),
-                                        Text('credits 3'),
-                                        Text('credits 4'),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      width: (screen_width / 10), //kinda works?
-                                      height: 110,
-                                      //child: Text(
-                                      //'Screen Size: ${(screen_width / 10).toString()} x ${screen_height.toString()}')
-                                    ),
-                                    ElevatedButton(
-                                      onPressed: () {},
-                                      style: ElevatedButton.styleFrom(
-                                        shape: new RoundedRectangleBorder(
-                                          borderRadius:
-                                              new BorderRadius.circular(
-                                                  Constants
-                                                      .Constants.cornerRad),
-                                        ),
-                                        elevation: 10,
-                                        primary: Color(0xff151B54),
-                                        minimumSize: Size(200, 80),
-                                      ),
-                                      child: Text('Read Now',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: Constants
-                                                  .Constants.textSize2)),
-                                    )
-                                  ],
+                            
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Author: ' + book.author),
+                      Text('Curator: ' + book.curator),
+                      Text('Illustrator: ' +
+                          book.illustrator),
+                                
+                    ],
+                  ),
+                  //Spacer(),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    style: ElevatedButton.styleFrom(
+                      shape: new RoundedRectangleBorder(
+                        borderRadius:
+                            new BorderRadius.circular(
+                                Constants
+                                    .Constants.cornerRad),
+                      ),
+                      elevation: 10,
+                      primary: Color(0xff151B54),
+                      minimumSize: Size(200, 80),
+                    ),
+                    child: Text('Read Now',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: Constants
+                                .Constants.textSize2)),
+                  ),
+                ],
                                 ),
-                              ],
-                            )
+                          
                           ],
                         ),
-                      ]),
-                ),
+                      ],),
               ),
             ),
           ],

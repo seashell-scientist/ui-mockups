@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import './hoot_app_bar.dart';
 import './hoot_quiz_bar.dart';
 import './constants.dart' as Constants;
+import './answer_tile.dart';
 
 class Frame_12 extends StatelessWidget {
   @override
@@ -33,13 +34,17 @@ class Frame_12 extends StatelessWidget {
                             children: [
                               Row(
                                 children: [
-                                  Text('Question 1: '),
+                                  Text('Question 1: ',
+                                      textScaleFactor: 2,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold)),
                                   IconButton(
-                                      icon: Icon(Icons.volume_up_rounded),
+                                      icon: Icon(Icons.volume_up_rounded,
+                                          size: 30),
                                       onPressed: () {})
                                 ],
                               ),
-                              Text('Text of question 1?')
+                              Text('Text of question 1', textScaleFactor: 2)
                             ],
                           )),
                       SizedBox(
@@ -47,9 +52,18 @@ class Frame_12 extends StatelessWidget {
                       ),
                       SizedBox(
                           width: (screen_width * .35),
-                          child: Card(
-                              child: Text('question picture'),
-                              color: Colors.white)
+                          child: SizedBox(
+                            width: ((screen_width * .35) * .8),
+                            height: ((screen_width * .35) * .8),
+                            child: Card(
+                                child: Center(child: Text('question picture')),
+                                color: Colors.white,
+                                elevation: 5,
+                                shadowColor: Colors.black,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(25)))),
+                          )
                           //alignment: Alignment.center,
                           //child: Image.asset(
                           //  'test_book_cover.png',
@@ -63,21 +77,58 @@ class Frame_12 extends StatelessWidget {
                   child: Column(
                     children: [
                       SizedBox(
-                          width: (screen_width * .15),
-                          child: Text('blanklane')),
+                        width: (screen_width * .15),
+                        //child: Text('blanklane'),
+                      ),
                     ],
                   ),
-                  color: Colors.blue,
+                  color: Colors.white,
                 ),
                 Container(
                   child: Column(
                     children: [
                       SizedBox(
-                          width: (screen_width * .5),
-                          child: Text('placeholder answer lane')),
+                        width: (screen_width * .5),
+                        child: Wrap(
+                          alignment: WrapAlignment.center,
+                          children: [
+                            AnswerTile(),
+                            AnswerTile(),
+                            AnswerTile(),
+                            AnswerTile(),
+
+                            /*
+                            SizedBox(
+                                height: 300,
+                                width: 300,
+                                child: Card(
+                                  color: Colors.red.shade300,
+                                )),
+                            SizedBox(
+                                height: 300,
+                                width: 300,
+                                child: Card(
+                                  color: Colors.green.shade300,
+                                )),
+                            SizedBox(
+                                height: 300,
+                                width: 300,
+                                child: Card(
+                                  color: Colors.blue.shade300,
+                                )),
+                            SizedBox(
+                                height: 300,
+                                width: 300,
+                                child: Card(
+                                  color: Colors.amber.shade300,
+                                )),
+                                */
+                          ],
+                        ),
+                      ),
                     ],
                   ),
-                  color: Colors.green,
+                  color: Colors.white,
                 ),
               ],
             ),
