@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-
-import './frame_10.dart';
-import './frame_12.dart';
-import './route_testing.dart';
-//import './hoot_app_bar.dart';
+import 'package:page11/frame_10.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,10 +10,23 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'homepage screen?',
-      home: Frame_10(),
-      //home: Frame_12(),
-      //home: FirstScreen(),
+      builder: (context, widget) => ResponsiveWrapper.builder(
+          BouncingScrollWrapper.builder(context, widget),
+         
+          minWidth: 1000,
+          defaultScale: true,
+          breakpoints: [
+            //ResponsiveBreakpoint.resize(450, name: MOBILE),
+            ResponsiveBreakpoint.resize(800, name: TABLET),
+            ResponsiveBreakpoint.autoScale(1200, name: DESKTOP),
+            ResponsiveBreakpoint.autoScale(1800, name: "4K"),
+
+          ],
+          background: Container(color: Color(0xFFF5F5F5))),
+  
+      theme: Theme.of(context).copyWith(platform: TargetPlatform.android),
+      debugShowCheckedModeBanner: false,
+      home: Frame10(),
     );
   }
 }

@@ -15,13 +15,13 @@ class FirstScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            RaisedButton(
+            ElevatedButton(
               child: Text('Book Details Button'),
               onPressed: () {
                 Navigator.push(
                   context,
                   //MaterialPageRoute(builder: (context) => SecondScreen()),
-                  MaterialPageRoute(builder: (context) => Frame_10()),
+                  MaterialPageRoute(builder: (context) => Frame10()),
                 );
               },
             ),

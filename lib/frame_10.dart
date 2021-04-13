@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-
 import './hoot_app_bar.dart';
 import './cloud_background.dart';
 import './Constants.dart' as Constants;
 import './Models/Book.dart';
 
-class Frame_10 extends StatelessWidget {
-  Book book = Book(
+class Frame10 extends StatelessWidget {
+  final Book book = Book(
     title: 'I Can Too: Dyslexic Heroes',
     author: 'James E Gentry',
     curator: 'Curator Dude',
@@ -19,156 +18,148 @@ class Frame_10 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
       home: Scaffold(
         appBar: HootAppBar(),
         body: Stack(
           children: <Widget>[
             Container(
-              // first stack item for background
               decoration: CustomBackground().baseBackgroundDecoration(),
             ),
-            //second stack item, primary box thing
             Center(
               child: Padding(
-                padding: EdgeInsets.only(left: (MediaQuery.of(context).size.width * .1), right: (MediaQuery.of(context).size.width * .1),),
+                padding: EdgeInsets.only(
+                  left: (MediaQuery.of(context).size.width * .1),
+                  right: (MediaQuery.of(context).size.width * .1),
+                ),
                 child: AspectRatio(
-                  aspectRatio: 2/1,
+                  aspectRatio: 2 / 1,
                   child: Container(
-                    constraints: BoxConstraints(maxWidth: 1080, minWidth: 540),
-             
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          bottomLeft:
-                              Radius.circular(Constants.Constants.cornerRad),
-                          topLeft:
-                              Radius.circular(Constants.Constants.cornerRad),
-                        ),
-                        color: Colors.white,
-                        border: Border.all(color: Colors.black, width: 0.5),),
-
-
+                      borderRadius: BorderRadius.only(
+                        bottomLeft:
+                            Radius.circular(Constants.Constants.cornerRad),
+                        topLeft: Radius.circular(Constants.Constants.cornerRad),
+                      ),
+                      color: Colors.white,
+                      border: Border.all(color: Colors.black, width: 0.5),
+                    ),
                     child: Row(
-                          children: [
-                            
-                            Expanded(
-                              flex: 1,
-                                                      child: ClipRRect(
-                                borderRadius: BorderRadius.circular(
-                                    Constants.Constants.cornerRad),
-                                child: Image.network(book.coverUrl),
-                              ),
-                                                      ),
-       //Spacer(),
-                    
-                            //right hand side
-                            Expanded(
-                              flex: 1,
-                              child: Padding(
-                                padding: EdgeInsets.only(left: (MediaQuery.of(context).size.width * .025),),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                Text(book.title,
-                        style: TextStyle(
-                                fontSize: Constants
-                                    .Constants.textSize1),),
-                                    
-                    
-                                    Text(book.summary),
-                             Spacer(),
-                                  
-                                        
-                                        
-                                        
-                                        Row(
-                                    
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          RichText(
-                                text: TextSpan(
-                          
-                                  children: <TextSpan>[
-                                    TextSpan(
-                                      text: 'Author: ',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    TextSpan(
-                                      text: book.author,
-                                  
-                                    ),
-                                  ],
-                                ),
-                            ),
-                           RichText(
-                                text: TextSpan(
-                          
-                                  children: <TextSpan>[
-                                    TextSpan(
-                                      text: 'Illustrator: ',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    TextSpan(
-                                      text: book.illustrator,
-                                  
-                                    ),
-                                  ],
-                                ),
-                            ),
-                            RichText(
-                                text: TextSpan(
-                          
-                                  children: <TextSpan>[
-                                    TextSpan(
-                                      text: 'Curator: ',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    TextSpan(
-                                      text: book.curator,
-                                  
-                                    ),
-                                  ],
-                                ),
-                            ),
-                                        
-                        ],
-                      ),
-                      Spacer(),
-                      ElevatedButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        style: ElevatedButton.styleFrom(
-                          shape: new RoundedRectangleBorder(
-                                borderRadius:
-                                    new BorderRadius.circular(
-                                        Constants
-                                            .Constants.cornerRad),
+                      children: [
+                        Expanded(
+                          flex: 1,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(
+                                Constants.Constants.cornerRad),
+                            child: Image.network(book.coverUrl),
                           ),
-                          elevation: 10,
-                          primary: Color(0xff151B54),
-                          minimumSize: Size(200, 80),
                         ),
-                        child: Text('Read Now',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: Constants
-                                        .Constants.textSize2)),
-                      ),
-                    ],
+                        Expanded(
+                          flex: 1,
+                          child: Padding(
+                            padding: EdgeInsets.all(
+                                MediaQuery.of(context).size.width * .025),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom: 12.0),
+                                  child: Text(
+                                    book.title,
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize:
+                                            Constants.Constants.textSize1),
+                                  ),
+                                ),
+                                Text(book.summary),
+                                Spacer(),
+                                Row(
+                                  children: [
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        RichText(
+                                          text: TextSpan(
+                                            children: <TextSpan>[
+                                              TextSpan(
+                                                text: 'Author: ',
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                              TextSpan(
+                                                text: book.author,
+                                              ),
+                                            ],
+                                          ),
                                         ),
-                                  
+                                        RichText(
+                                          text: TextSpan(
+                                            children: <TextSpan>[
+                                              TextSpan(
+                                                text: 'Illustrator: ',
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                              TextSpan(
+                                                text: book.illustrator,
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        RichText(
+                                          text: TextSpan(
+                                            children: <TextSpan>[
+                                              TextSpan(
+                                                text: 'Curator: ',
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                              TextSpan(
+                                                text: book.curator,
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Spacer(),
+                                    ElevatedButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                        shape: new RoundedRectangleBorder(
+                                          borderRadius:
+                                              new BorderRadius.circular(
+                                                  Constants
+                                                      .Constants.cornerRad),
+                                        ),
+                                        elevation: 10,
+                                        primary: Color(0xff151B54),
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(15.0),
+                                        child: Text(
+                                          'Read Now',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
                                   ],
                                 ),
-                              ),
+                              ],
                             ),
-                          ],),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
