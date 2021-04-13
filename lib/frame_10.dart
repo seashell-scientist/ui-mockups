@@ -31,89 +31,101 @@ class Frame_10 extends StatelessWidget {
             ),
             //second stack item, primary box thing
             Center(
-              child: Container(
-                height: MediaQuery.of(context).size.height * .6,
-                width: MediaQuery.of(context).size.width * .75,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      bottomLeft:
-                          Radius.circular(Constants.Constants.cornerRad),
-                      topLeft:
-                          Radius.circular(Constants.Constants.cornerRad),
-                    ),
-                    color: Colors.white,
-                    border: Border.all(color: Colors.black, width: 0.5)),
-
-
-                child: Row(
-                      children: [
-                        
-                        Expanded(
-                                                  child: ClipRRect(
-                            borderRadius: BorderRadius.circular(
-                                Constants.Constants.cornerRad),
-                            child: Image.network(book.coverUrl),
+              child: Padding(
+                padding: const EdgeInsets.only(left: 200, right: 200),
+                child: Transform.scale(
+                  scale: 1.0,
+                  child: AspectRatio(
+                    aspectRatio: 2/1,
+                    child: Container(
+             
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                            bottomLeft:
+                                Radius.circular(Constants.Constants.cornerRad),
+                            topLeft:
+                                Radius.circular(Constants.Constants.cornerRad),
                           ),
-                        ),
-       // Spacer(),
-                
-                        //right hand side
+                          color: Colors.white,
+                          border: Border.all(color: Colors.black, width: 0.5),),
+
+
+                      child: Row(
+                            children: [
+                              
+                              Expanded(
+                                flex: 1,
+                                                        child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(
+                                      Constants.Constants.cornerRad),
+                                  child: Image.network(book.coverUrl),
+                                ),
+                                                        ),
+       //Spacer(),
+                      
+                              //right hand side
+                              Expanded(
+                                flex: 1,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                Text(book.title,
+                          style: TextStyle(
+                                fontSize: Constants
+                                    .Constants.textSize1),),
+                                    
+                      
+                                    Text(book.summary),
+                               Spacer(),
+                                  
+                                        
+                                        
+                                        
+                                        Row(
+                                    
+                      children: [
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                        Text(book.title,
-                    style: TextStyle(
-                        fontSize: Constants
-                            .Constants.textSize1),),
-                            
-                
-                            Text(book.summary),
-                           // Spacer(),
-                          
-                                
-                                
-                                
-                                Row(
-                            
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('Author: ' + book.author),
-                      Text('Curator: ' + book.curator),
-                      Text('Illustrator: ' +
-                          book.illustrator),
-                                
-                    ],
-                  ),
-                  //Spacer(),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    style: ElevatedButton.styleFrom(
-                      shape: new RoundedRectangleBorder(
-                        borderRadius:
-                            new BorderRadius.circular(
-                                Constants
-                                    .Constants.cornerRad),
-                      ),
-                      elevation: 10,
-                      primary: Color(0xff151B54),
-                      minimumSize: Size(200, 80),
-                    ),
-                    child: Text('Read Now',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: Constants
-                                .Constants.textSize2)),
-                  ),
-                ],
-                                ),
-                          
+                            Text('Author: ' + book.author),
+                            Text('Curator: ' + book.curator),
+                            Text('Illustrator: ' +
+                                  book.illustrator),
+                                        
                           ],
                         ),
-                      ],),
+                        Spacer(),
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          style: ElevatedButton.styleFrom(
+                            shape: new RoundedRectangleBorder(
+                                borderRadius:
+                                    new BorderRadius.circular(
+                                        Constants
+                                            .Constants.cornerRad),
+                            ),
+                            elevation: 10,
+                            primary: Color(0xff151B54),
+                            minimumSize: Size(200, 80),
+                          ),
+                          child: Text('Read Now',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: Constants
+                                        .Constants.textSize2)),
+                        ),
+                      ],
+                                        ),
+                                  
+                                  ],
+                                ),
+                              ),
+                            ],),
+                    ),
+                  ),
+                ),
               ),
             ),
           ],
