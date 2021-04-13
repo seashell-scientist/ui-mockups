@@ -32,98 +32,143 @@ class Frame_10 extends StatelessWidget {
             //second stack item, primary box thing
             Center(
               child: Padding(
-                padding: const EdgeInsets.only(left: 200, right: 200),
-                child: Transform.scale(
-                  scale: 1.0,
-                  child: AspectRatio(
-                    aspectRatio: 2/1,
-                    child: Container(
+                padding: EdgeInsets.only(left: (MediaQuery.of(context).size.width * .1), right: (MediaQuery.of(context).size.width * .1),),
+                child: AspectRatio(
+                  aspectRatio: 2/1,
+                  child: Container(
+                    constraints: BoxConstraints(maxWidth: 1080, minWidth: 540),
              
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                            bottomLeft:
-                                Radius.circular(Constants.Constants.cornerRad),
-                            topLeft:
-                                Radius.circular(Constants.Constants.cornerRad),
-                          ),
-                          color: Colors.white,
-                          border: Border.all(color: Colors.black, width: 0.5),),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                          bottomLeft:
+                              Radius.circular(Constants.Constants.cornerRad),
+                          topLeft:
+                              Radius.circular(Constants.Constants.cornerRad),
+                        ),
+                        color: Colors.white,
+                        border: Border.all(color: Colors.black, width: 0.5),),
 
 
-                      child: Row(
-                            children: [
-                              
-                              Expanded(
-                                flex: 1,
-                                                        child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(
-                                      Constants.Constants.cornerRad),
-                                  child: Image.network(book.coverUrl),
-                                ),
-                                                        ),
+                    child: Row(
+                          children: [
+                            
+                            Expanded(
+                              flex: 1,
+                                                      child: ClipRRect(
+                                borderRadius: BorderRadius.circular(
+                                    Constants.Constants.cornerRad),
+                                child: Image.network(book.coverUrl),
+                              ),
+                                                      ),
        //Spacer(),
-                      
-                              //right hand side
-                              Expanded(
-                                flex: 1,
+                    
+                            //right hand side
+                            Expanded(
+                              flex: 1,
+                              child: Padding(
+                                padding: EdgeInsets.only(left: (MediaQuery.of(context).size.width * .025),),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                 Text(book.title,
-                          style: TextStyle(
+                        style: TextStyle(
                                 fontSize: Constants
                                     .Constants.textSize1),),
                                     
-                      
+                    
                                     Text(book.summary),
-                               Spacer(),
+                             Spacer(),
                                   
                                         
                                         
                                         
                                         Row(
                                     
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text('Author: ' + book.author),
-                            Text('Curator: ' + book.curator),
-                            Text('Illustrator: ' +
-                                  book.illustrator),
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          RichText(
+                                text: TextSpan(
+                          
+                                  children: <TextSpan>[
+                                    TextSpan(
+                                      text: 'Author: ',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    TextSpan(
+                                      text: book.author,
+                                  
+                                    ),
+                                  ],
+                                ),
+                            ),
+                           RichText(
+                                text: TextSpan(
+                          
+                                  children: <TextSpan>[
+                                    TextSpan(
+                                      text: 'Illustrator: ',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    TextSpan(
+                                      text: book.illustrator,
+                                  
+                                    ),
+                                  ],
+                                ),
+                            ),
+                            RichText(
+                                text: TextSpan(
+                          
+                                  children: <TextSpan>[
+                                    TextSpan(
+                                      text: 'Curator: ',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    TextSpan(
+                                      text: book.curator,
+                                  
+                                    ),
+                                  ],
+                                ),
+                            ),
                                         
-                          ],
-                        ),
-                        Spacer(),
-                        ElevatedButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          style: ElevatedButton.styleFrom(
-                            shape: new RoundedRectangleBorder(
+                        ],
+                      ),
+                      Spacer(),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        style: ElevatedButton.styleFrom(
+                          shape: new RoundedRectangleBorder(
                                 borderRadius:
                                     new BorderRadius.circular(
                                         Constants
                                             .Constants.cornerRad),
-                            ),
-                            elevation: 10,
-                            primary: Color(0xff151B54),
-                            minimumSize: Size(200, 80),
                           ),
-                          child: Text('Read Now',
+                          elevation: 10,
+                          primary: Color(0xff151B54),
+                          minimumSize: Size(200, 80),
+                        ),
+                        child: Text('Read Now',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: Constants
                                         .Constants.textSize2)),
-                        ),
-                      ],
+                      ),
+                    ],
                                         ),
                                   
                                   ],
                                 ),
                               ),
-                            ],),
-                    ),
+                            ),
+                          ],),
                   ),
                 ),
               ),
