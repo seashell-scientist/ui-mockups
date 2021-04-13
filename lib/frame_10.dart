@@ -85,13 +85,64 @@ class Frame_10 extends StatelessWidget {
                                     
                       children: [
                         Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
+<<<<<<< HEAD
                             Text('Author: ' + book.author),
                             Text('Curator: ' + book.curator),
                             Text('Illustrator: ' +
                                   book.illustrator),
                                         
+=======
+                        Text(book.title,
+                    style: TextStyle(
+                        fontSize: Constants
+                            .Constants.textSize1),),
+                            Container(child: Text(book.summary)),
+                           // Spacer(),
+                          
+                                
+                                
+                                
+                                Row(
+                            
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Author: ' + book.author),
+                      Text('Curator: ' + book.curator),
+                      Text('Illustrator: ' +
+                          book.illustrator),
+                                
+                    ],
+                  ),
+                  //Spacer(),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    style: ElevatedButton.styleFrom(
+                      shape: new RoundedRectangleBorder(
+                        borderRadius:
+                            new BorderRadius.circular(
+                                Constants
+                                    .Constants.cornerRad),
+                      ),
+                      elevation: 10,
+                      primary: Color(0xff151B54),
+                      minimumSize: Size(200, 80),
+                    ),
+                    child: Text('Read Now',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: Constants
+                                .Constants.textSize2)),
+                  ),
+                ],
+                                ),
+                          
+>>>>>>> 9668bc2ae57be7fd584fb07a6b7623de872c8267
                           ],
                         ),
                         Spacer(),
