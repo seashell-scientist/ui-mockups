@@ -43,31 +43,25 @@ class Frame_10 extends StatelessWidget {
                     ),
                     color: Colors.white,
                     border: Border.all(color: Colors.black, width: 0.5)),
-
-
                 child: Row(
-                      children: [
-                        
+                      children: [                    
                         Expanded(
-                                                  child: ClipRRect(
+                            child: ClipRRect(
                             borderRadius: BorderRadius.circular(
                                 Constants.Constants.cornerRad),
                             child: Image.network(book.coverUrl),
                           ),
                         ),
-       // Spacer(),
-                
+       // Spacer(),                
                         //right hand side
                         Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                         Text(book.title,
                     style: TextStyle(
                         fontSize: Constants
                             .Constants.textSize1),),
-                            
-                
-                            Text(book.summary),
+                            Container(child: Text(book.summary)),
                            // Spacer(),
                           
                                 
