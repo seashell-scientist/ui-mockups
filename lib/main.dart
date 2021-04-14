@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       builder: (context, widget) => ResponsiveWrapper.builder(
           BouncingScrollWrapper.builder(context, widget),
-         
+        
           minWidth: 1000,
           defaultScale: true,
           breakpoints: [
