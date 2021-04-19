@@ -17,7 +17,7 @@ class AnswerTile extends StatelessWidget {
         shadowColor: Colors.black,
               textStyle: TextStyle(
 	          color: Colors.black,
-	          //fontSize: 25,
+	          //fontSize: 25, //omitting fontsize make the text a bit more adaptable
 	          fontWeight: FontWeight.bold,
 	      ),
         shape: RoundedRectangleBorder(
