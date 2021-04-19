@@ -30,11 +30,11 @@ class FirstScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Frame_12()),
+                  MaterialPageRoute(builder: (context) => Frame12()),
                 );
               },
             ),
-            AnswerTile(),
+            //AnswerTile(),
           ],
         ),
       ),
