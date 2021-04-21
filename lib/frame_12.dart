@@ -71,6 +71,7 @@ class Frame12 extends StatelessWidget {
                       children: [
                         SizedBox(
                             width: (screen_width * .4),
+                            height: (screen_height * .15),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -89,29 +90,30 @@ class Frame12 extends StatelessWidget {
                                 Text('Text of question 1', textScaleFactor: 2)
                               ],
                             )),
-                        SizedBox(
-                          height: screen_width * 0.03,
+                        Column(mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                                width: (screen_width * .35),
+                                child: SizedBox(
+                                  width: ((screen_width * .35) * .8),
+                                  height: ((screen_width * .35) * .8),
+                                  child: Card(
+                                      child:
+                                          Center(child: Text('question picture')),
+                                      color: Colors.white,
+                                      elevation: 5,s
+                                      shadowColor: Colors.black,
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(25)))),
+                                )
+                                //alignment: Alignment.center,
+                                //child: Image.asset(
+                                //  'test_book_cover.png',
+                                //  width: ((screen_width * .35) * .9),
+                                ),
+                          ],
                         ),
-                        SizedBox(
-                            width: (screen_width * .35),
-                            child: SizedBox(
-                              width: ((screen_width * .35) * .8),
-                              height: ((screen_width * .35) * .8),
-                              child: Card(
-                                  child:
-                                      Center(child: Text('question picture')),
-                                  color: Colors.white,
-                                  elevation: 5,
-                                  shadowColor: Colors.black,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(25)))),
-                            )
-                            //alignment: Alignment.center,
-                            //child: Image.asset(
-                            //  'test_book_cover.png',
-                            //  width: ((screen_width * .35) * .9),
-                            ),
                       ],
                     ),
                     color: Colors.red,
@@ -119,8 +121,10 @@ class Frame12 extends StatelessWidget {
                 ),
                                 Expanded(
                   flex: 1,
-                  child: Container(
-                    child: LayoutGrid(//5x5
+                  
+                    child:Container( //alignment: Alignment.center,
+                    color: Colors.green,
+                    child:LayoutGrid(//5x5
                       areas: ''' 
      .  .   .    .   .  
      .  yellow  .  green  . 
@@ -132,7 +136,7 @@ class Frame12 extends StatelessWidget {
                       columnSizes: [ //x
                         (screen_width * .05).px,
                         auto,
-                        (screen_width * .01).px,
+                        (screen_height * .01).px,
                         auto,
                         (screen_width * .05).px,
                       ],
@@ -154,7 +158,8 @@ class Frame12 extends StatelessWidget {
                       ],
                     ),
                   ),
-                ),
+                  ),
+                
               ],
             ),
           ],
