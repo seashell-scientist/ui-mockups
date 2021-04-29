@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import './hoot_app_bar.dart';
 import './cloud_background.dart';
 import './Constants.dart' as Constants;
+import './route_testing.dart';
 
 class LoginPage extends StatelessWidget {
   @override
@@ -34,8 +35,8 @@ class LoginPage extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      NamedButton(buttonName: 'go back button'),
-                      NamedButton(buttonName: 'Submit Code Button'),
+                      NamedButton(buttonName: 'BACK'),
+                      NamedButton(buttonName: 'SUBMIT'),
                     ],
                   )
                 ],
@@ -51,7 +52,8 @@ class LoginPage extends StatelessWidget {
 class NamedButton extends StatefulWidget {
   final String buttonName;
   final String routeName;
-  const NamedButton({Key key, this.buttonName, this.routeName}) : super(key: key);
+  const NamedButton({Key key, this.buttonName, this.routeName})
+      : super(key: key);
   @override
   _NamedButtonState createState() => _NamedButtonState();
 }
@@ -61,7 +63,11 @@ class _NamedButtonState extends State<NamedButton> {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () {
-        Navigator.pop(context);
+        //Navigator.pop(context);
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => FirstScreen()),
+        );
         //add a conditional later here to change the route depending on route name?
         //or can i pass the route/navigator as an argument?
       },
