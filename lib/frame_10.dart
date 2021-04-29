@@ -128,30 +128,7 @@ class Frame10 extends StatelessWidget {
                                       ],
                                     ),
                                     Spacer(),
-                                    ElevatedButton(
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      },
-                                      style: ElevatedButton.styleFrom(
-                                        shape: new RoundedRectangleBorder(
-                                          borderRadius:
-                                              new BorderRadius.circular(
-                                                  Constants
-                                                      .Constants.cornerRad),
-                                        ),
-                                        elevation: 10,
-                                        primary: Color(0xff151B54),
-                                      ),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(15.0),
-                                        child: Text(
-                                          'Read Now',
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
+                                    NamedButton(),
                                   ],
                                 ),
                               ],
@@ -165,6 +142,40 @@ class Frame10 extends StatelessWidget {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class NamedButton extends StatelessWidget {
+  //final String buttonName;
+  const NamedButton({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {
+        Navigator.pop(context);
+      },
+      style: ElevatedButton.styleFrom(
+        shape: new RoundedRectangleBorder(
+          borderRadius:
+              new BorderRadius.circular(Constants.Constants.cornerRad),
+        ),
+        elevation: 10,
+        primary: Color(0xff151B54),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: Text(
+          'Read Now',
+          //buttonName, //there has to be a way to pass args to widget build 
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
     );
