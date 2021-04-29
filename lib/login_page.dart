@@ -21,23 +21,30 @@ class LoginPage extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Container(
-                    child: Image.asset('blue_owl-02.png'),
-                  ),
+                  SizedBox(height: MediaQuery.of(context).size.height * .1,),
+                  Align(heightFactor: .6,
+                      child: Image.asset('blue_owl-02.png'),
+                    ),
+                  
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    children: [Text('Class Code')],
+                    children: [Text('Class Code', textScaleFactor: 1.3,)],
                   ),
                   TextField(
                     decoration: InputDecoration(
+                        fillColor: Colors.white,filled: true,
                         border: OutlineInputBorder(), hintText: '0000'),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      NamedButton(buttonName: 'BACK'),
-                      NamedButton(buttonName: 'SUBMIT'),
-                    ],
+                  //SizedBox(height: MediaQuery.of(context).size.height * .05,),
+                  Padding(
+                    padding: const EdgeInsets.all(4),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        NamedButton(buttonName: 'BACK'),
+                        NamedButton(buttonName: 'SUBMIT'),
+                      ],
+                    ),
                   )
                 ],
               ),
