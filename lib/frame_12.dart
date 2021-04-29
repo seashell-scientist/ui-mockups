@@ -1,54 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_layout_grid/flutter_layout_grid.dart';
+
 
 import './hoot_app_bar.dart';
 import './hoot_quiz_bar.dart';
 import './constants.dart' as Constants;
-//import './answer_tile.dart';
-import 'answer_tile_grid.dart';
+//import 'answer_tile_grid.dart';
 
-class AnswerTile extends StatelessWidget {
-  AnswerTile(this.imageData);
-  final String imageData;
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {},
-      style: ElevatedButton.styleFrom(
-        onPrimary: Colors.black,
-        primary: Colors.white,
-        shadowColor: Colors.black,
-        textStyle: TextStyle(
-          color: Colors.black,
-          //fontSize: 25, //omitting fontsize make the text a bit more adaptable
-          fontWeight: FontWeight.bold,
-        ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(25),
-        ),
-        elevation: 10,
-      ),
-      clipBehavior: Clip.none,
-      autofocus: false,
-      child: Padding(
-        padding: EdgeInsets.all(10),
-        child: SizedBox(
-          height: MediaQuery.of(context).size.width * .13,
-          width: MediaQuery.of(context).size.width * .13,
-          child: Column(
-            children: [
-              Text('answer text'),
-              //Text('answer picture'),
-              Container(
-                child: Image.asset(imageData),
-              )
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
 
 class Frame12 extends StatelessWidget {
   @override
@@ -128,5 +86,122 @@ class Frame12 extends StatelessWidget {
         ),
       ),
     ));
+  }
+}
+
+
+//create 'reader' for input/args, string imageString
+class AnswerTile extends StatefulWidget {
+  final String imageString;
+  const AnswerTile({Key key, this.imageString}) : super(key: key);
+  @override
+  _AnswerTileState createState() => _AnswerTileState();
+}
+
+//where the read arg goes
+class _AnswerTileState extends State<AnswerTile> {
+  @override
+  Widget build(BuildContext context) {
+    //return Container(child: Image.asset(widget.imageString));
+    return ElevatedButton(
+      onPressed: () {},
+      style: ElevatedButton.styleFrom( //may need conversion to elevatedButton style: ButtonStyle to get the conditional color change on press? 
+        onPrimary: Colors.black, //text
+        primary: Colors.white,
+        shadowColor: Colors.black,
+        textStyle: TextStyle(
+          color: Colors.black,
+          //fontSize: 25, //omitting fontsize make the text a bit more adaptable
+          fontWeight: FontWeight.bold,
+        ),
+        
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(25),
+        ),
+        elevation: 10,
+      ),
+      clipBehavior: Clip.none,
+      autofocus: false,
+      child: Padding(padding: EdgeInsets.all(10),
+        child: SizedBox(
+          height: MediaQuery.of(context).size.width * .13,
+          width: MediaQuery.of(context).size.width * .13,
+          child: Column(children: [
+              Text('ANDERSON???'),
+              //Text('answer picture'),
+              Expanded(flex: 1,
+                child: Image.network(widget.imageString),
+              )],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+//where the arg gets passed
+class AnswerTileThing extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    double screen_width = MediaQuery.of(context).size.width;
+    double screen_height = MediaQuery.of(context).size.height;
+    return SafeArea( child: Expanded(
+      flex: 1,
+      child: AspectRatio(
+        aspectRatio: 1 / 1,
+        child: Container(
+          //alignment: Alignment.center,
+          color: Colors.white,
+          child: LayoutGrid(
+            //5x5
+            areas: ''' 
+    .  .   .    .   .  
+    .  yellow  .  green  . 
+    .   .   .   .   . 
+    .  red  . blue  . 
+    .   .   .   .  . 
+  ''', //ah can't have repeat colors, only one per designated area
+            // Note that the number of columns and rows matches the grid above (3x3)
+            columnSizes: [
+              //x
+              (screen_width * .05).px,
+              auto,
+              (screen_height * .01).px,
+              auto,
+              (screen_width * .05).px,
+            ],
+            rowSizes: [
+              //y
+              (screen_height * .05).px, //.fr is for flexible size, fill all space
+              auto,
+              (screen_height * .01).px,
+              auto,
+              (screen_height * .05).px,
+            ],
+            children: [
+              // Using NamedAreaGridPlacement constructor
+              // Alternatively, an extension method on Widget is available
+              AnswerTile(
+                imageString:
+                    'https://m.media-amazon.com/images/M/MV5BMTY1MjgzODIwNF5BMl5BanBnXkFtZTcwNTM2NzExMw@@._V1_UY317_CR10,0,214,317_AL_.jpg',
+              ).inGridArea('blue'),
+              //Container(color: Colors.blue).inGridArea('blue'),
+              AnswerTile(
+                      imageString:
+                          'https://tse2.mm.bing.net/th?id=OIP.y9CLuLh4R0QSwLIIWNOLNAHaHD&pid=Api')
+                  .inGridArea('red'),
+              AnswerTile(
+                      imageString:
+                          'https://tse3.mm.bing.net/th?id=OIP.1jLZAIx9nzOn4EeGpFLZWAHaJw&pid=Api')
+                  .inGridArea('green'),
+              AnswerTile(
+                      imageString:
+                          'https://upload.wikimedia.org/wikipedia/en/c/c6/NeoTheMatrix.jpg')
+                  .inGridArea('yellow'),
+            ],
+          ),
+        ),
+      ),
+    ),);
   }
 }

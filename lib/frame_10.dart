@@ -128,7 +128,7 @@ class Frame10 extends StatelessWidget {
                                       ],
                                     ),
                                     Spacer(),
-                                    NamedButton(),
+                                    NamedButton(buttonName: 'Read Now',),
                                   ],
                                 ),
                               ],
@@ -148,18 +148,18 @@ class Frame10 extends StatelessWidget {
   }
 }
 
-class NamedButton extends StatelessWidget {
-  //final String buttonName;
-  const NamedButton({
-    Key key,
-  }) : super(key: key);
+class NamedButton extends StatefulWidget {
+  final String buttonName;
+  const NamedButton({Key key, this.buttonName}) : super(key: key);
+  @override
+  _NamedButtonState createState() => _NamedButtonState();
+}
 
+class _NamedButtonState extends State<NamedButton> {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {
-        Navigator.pop(context);
-      },
+      onPressed: () {Navigator.pop(context);},
       style: ElevatedButton.styleFrom(
         shape: new RoundedRectangleBorder(
           borderRadius:
@@ -171,8 +171,8 @@ class NamedButton extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(15.0),
         child: Text(
-          'Read Now',
-          //buttonName, //there has to be a way to pass args to widget build 
+          widget.buttonName,
+          //buttonName, //there has to be a way to pass args to widget build
           style: TextStyle(
             fontWeight: FontWeight.bold,
           ),
@@ -181,3 +181,4 @@ class NamedButton extends StatelessWidget {
     );
   }
 }
+
