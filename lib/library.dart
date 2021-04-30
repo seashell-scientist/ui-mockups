@@ -21,84 +21,97 @@ class LibraryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home: Scaffold(
-            appBar: HootAppBar(),
-            body: Stack(
-              children: [
-                Container(
-                    decoration: CustomBackground().baseBackgroundDecoration()),
-                Padding(
-                  padding: EdgeInsets.all(16),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        flex: 1,
-                        child: ListView(
-                          children: [
-                            Container(
-                              child: Padding(
-                                padding: EdgeInsets.all(4),
-                                child: CategoryCard(categoryTitle: 'Book Category 1',),
+      home: Scaffold(
+        appBar: LibraryAppBar(),
+        body: Stack(
+          children: [
+            Container(
+                decoration: CustomBackground().baseBackgroundDecoration()),
+            Padding(
+              padding: EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    flex: 1,
+                    child: Scrollbar(
+                                          child: ListView(
+                        children: [
+                          Container(
+                            child: Padding(
+                              padding: EdgeInsets.all(4),
+                              child: CategoryCard(
+                                categoryTitle: 'Book Category 1',
                               ),
                             ),
-                            Wrap(spacing: 12, runSpacing: 12, children: [
-                              BookCover(coverURL: sampleBook.coverUrl),
-                              BookCover(coverURL: sampleBook.coverUrl),
-                              BookCover(coverURL: sampleBook.coverUrl),
-                            ]),
-                            Container(
-                              child: Padding(
-                                padding: EdgeInsets.all(4),
-                                child: CategoryCard(categoryTitle: 'Book Category 2',),
+                          ),
+                          Wrap(spacing: 12, runSpacing: 12, children: [
+                            BookCover(coverURL: sampleBook.coverUrl),
+                            BookCover(coverURL: sampleBook.coverUrl),
+                            BookCover(coverURL: sampleBook.coverUrl),
+                          ]),
+                          Container(
+                            child: Padding(
+                              padding: EdgeInsets.all(4),
+                              child: CategoryCard(
+                                categoryTitle: 'Book Category 2',
                               ),
                             ),
-                            Wrap(spacing: 12, runSpacing: 12, children: [
-                              BookCover(coverURL: sampleBook.coverUrl),
-                              BookCover(coverURL: sampleBook.coverUrl),
-                              BookCover(coverURL: sampleBook.coverUrl),
-                              BookCover(coverURL: sampleBook.coverUrl),
-                              BookCover(coverURL: sampleBook.coverUrl),
-                            ]),
-                            Container(
-                              child: Padding(
-                                padding: EdgeInsets.all(4),
-                                child: CategoryCard(categoryTitle: 'Book Category 3',),
+                          ),
+                          Wrap(spacing: 12, runSpacing: 12, children: [
+                            BookCover(coverURL: sampleBook.coverUrl),
+                            BookCover(coverURL: sampleBook.coverUrl),
+                            BookCover(coverURL: sampleBook.coverUrl),
+                            BookCover(coverURL: sampleBook.coverUrl),
+                            BookCover(coverURL: sampleBook.coverUrl),
+                          ]),
+                          Container(
+                            child: Padding(
+                              padding: EdgeInsets.all(4),
+                              child: CategoryCard(
+                                categoryTitle: 'Book Category 3',
                               ),
                             ),
-                            Wrap(spacing: 12, runSpacing: 12, children: [
-                              BookCover(coverURL: sampleBook.coverUrl),
-                              BookCover(coverURL: sampleBook.coverUrl),
-                              BookCover(coverURL: sampleBook.coverUrl),
-                              BookCover(coverURL: sampleBook.coverUrl),
-                              BookCover(coverURL: sampleBook.coverUrl),
-                              BookCover(coverURL: sampleBook.coverUrl),
-                              BookCover(coverURL: sampleBook.coverUrl),
-                            ]),
-                            Container(
-                              child: Padding(
-                                padding: EdgeInsets.all(4),
-                                child: CategoryCard(categoryTitle: 'Book Category 4',),
+                          ),
+                          Wrap(spacing: 12, runSpacing: 12, children: [
+                            BookCover(coverURL: sampleBook.coverUrl),
+                            BookCover(coverURL: sampleBook.coverUrl),
+                            BookCover(coverURL: sampleBook.coverUrl),
+                            BookCover(coverURL: sampleBook.coverUrl),
+                            BookCover(coverURL: sampleBook.coverUrl),
+                            BookCover(coverURL: sampleBook.coverUrl),
+                            BookCover(coverURL: sampleBook.coverUrl),
+                          ]),
+                          Container(
+                            child: Padding(
+                              padding: EdgeInsets.all(4),
+                              child: CategoryCard(
+                                categoryTitle: 'Book Category 4',
                               ),
                             ),
-                            Wrap(spacing: 12, runSpacing: 12, children: [
-                              BookCover(coverURL: sampleBook.coverUrl),
-                              BookCover(coverURL: sampleBook.coverUrl),
-                              BookCover(coverURL: sampleBook.coverUrl),
-                              BookCover(coverURL: sampleBook.coverUrl),
-                              BookCover(coverURL: sampleBook.coverUrl),
-                              BookCover(coverURL: sampleBook.coverUrl),
-                              BookCover(coverURL: sampleBook.coverUrl),
-                              BookCover(coverURL: sampleBook.coverUrl),
-                            ]),
-                          ],
-                        ),
+                          ),
+                          Wrap(spacing: 12, runSpacing: 12, children: [
+                            BookCover(coverURL: sampleBook.coverUrl),
+                            BookCover(coverURL: sampleBook.coverUrl),
+                            BookCover(coverURL: sampleBook.coverUrl),
+                            BookCover(coverURL: sampleBook.coverUrl),
+                            BookCover(coverURL: sampleBook.coverUrl),
+                            BookCover(coverURL: sampleBook.coverUrl),
+                            BookCover(coverURL: sampleBook.coverUrl),
+                            BookCover(coverURL: sampleBook.coverUrl),
+                          ]),
+                        ],
                       ),
-                    ],
+                    ),
                   ),
-                ),
-              ],
-            ))); //Text('wrapped rows inside a single scrollable column');
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      debugShowCheckedModeBanner: false,
+    ); //Text('wrapped rows inside a single scrollable column');
   }
 }
 
@@ -150,10 +163,47 @@ class _CategoryCardState extends State<CategoryCard> {
   Widget build(BuildContext context) {
     return SizedBox(
       height: MediaQuery.of(context).size.height * .05,
-      child: Align( alignment: Alignment.bottomLeft,
-              child: Text(widget.categoryTitle,
-            textScaleFactor: 1.5),
+      child: Align(
+        alignment: Alignment.bottomLeft,
+        child: Text(widget.categoryTitle, textScaleFactor: 1.5),
       ),
     );
   }
+}
+
+class LibraryAppBar extends StatelessWidget implements PreferredSizeWidget {
+  @override
+  Widget build(BuildContext context) {
+    return 
+    
+    AppBar(centerTitle: false, 
+    title: Text("Hoot Web App"),
+      actions: [
+        SizedBox( width: MediaQuery.of(context).size.width * .4,
+                  height: MediaQuery.of(context).size.width * .1,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(color: Colors.white,
+                      child: Center(
+                        child: TextField(decoration: InputDecoration(border: InputBorder.none,
+          hintText: 'Search'),),
+                      ),
+                    ),
+                  ),
+        ),
+        IconButton( 
+          onPressed: () {}, 
+          icon: Icon(Icons.star,),
+          tooltip: 'Favorites',),
+        IconButton( 
+          onPressed: () {}, 
+          icon: Icon(Icons.assistant_photo_outlined,),
+          tooltip: 'Bookmarks',),
+      ],
+    );
+    
+  }
+
+  @override
+  Size get preferredSize => Size(double.infinity, kToolbarHeight);
 }
