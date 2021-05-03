@@ -59,7 +59,7 @@ class LibraryPage extends StatelessWidget {
                             ),
                           ),
                           Wrap(spacing: 12, runSpacing: 12, children: [
-                            BookCover(coverURL: sampleBook.coverUrl),
+                            BookCover(coverURL: sampleBook.coverUrl),//how to pass a route to this object? 
                             BookCover(coverURL: sampleBook.coverUrl),
                             BookCover(coverURL: sampleBook.coverUrl),
                             BookCover(coverURL: sampleBook.coverUrl),
@@ -132,7 +132,7 @@ class _BookCoverState extends State<BookCover> {
       height: MediaQuery.of(context).size.width * .15,
       width: MediaQuery.of(context).size.width * .15,
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {Navigator.pop(context);},
         style: ElevatedButton.styleFrom(
           padding: EdgeInsets.all(0),
           shape: RoundedRectangleBorder(
@@ -181,16 +181,20 @@ class LibraryAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: [
         SizedBox( width: MediaQuery.of(context).size.width * .4,
                   height: MediaQuery.of(context).size.width * .1,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(color: Colors.white,
-                      child: Center(
-                        child: TextField(decoration: InputDecoration(border: InputBorder.none,
+                    child: Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Container(color: Colors.white,
+                        child: Center(
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                            child: TextField(decoration: InputDecoration(border: InputBorder.none,
           hintText: 'Search'),),
+                          ),
+                        ),
                       ),
                     ),
                   ),
-        ),
+        
         IconButton( 
           onPressed: () {}, 
           icon: Icon(Icons.star,),
