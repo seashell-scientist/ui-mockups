@@ -155,29 +155,31 @@ class AnswerTileThing extends StatelessWidget {
           child: LayoutGrid(
             //5x5
             areas: ''' 
-    .  .   .    .   .  
-    .  yellow  .  green  . 
-    .   .   .   .   . 
-    .  red  . blue  . 
-    .   .   .   .  . 
+    .   .           .  .  
+    .  yellow    green .
+
+    .  red       blue  . 
+    .   .         .    . 
   ''', //ah can't have repeat colors, only one per designated area
             // Note that the number of columns and rows matches the grid above (3x3)
             columnSizes: [
-              //x
+              //x axis
               (screen_width * .05).px,
               auto,
-              (screen_height * .01).px,
+              //(screen_height * .01).px,
               auto,
               (screen_width * .05).px,
             ],
+            columnGap: (screen_width * .01),
             rowSizes: [
-              //y
+              //y axis
               (screen_height * .05).px, //.fr is for flexible size, fill all space
               auto,
-              (screen_height * .01).px,
+              //(screen_height * .01).px,
               auto,
               (screen_height * .05).px,
             ],
+            rowGap: (screen_width * .01),
             children: [
               // Using NamedAreaGridPlacement constructor
               // Alternatively, an extension method on Widget is available

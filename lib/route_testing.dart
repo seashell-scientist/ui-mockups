@@ -4,6 +4,7 @@ import './frame_10.dart';
 import './frame_12.dart';
 import './login_page.dart';
 import './library.dart';
+import './book_page.dart';
 //import 'answer_tile_grid.dart';
 
 class FirstScreen extends StatelessWidget {
@@ -17,6 +18,15 @@ class FirstScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
+            ElevatedButton(
+              child: Text('Book Page'),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => BookPage()),
+                );
+              },
+            ),
             ElevatedButton(
               child: Text('Book Details Button'),
               onPressed: () {
@@ -54,6 +64,7 @@ class FirstScreen extends StatelessWidget {
                 );
               },
             ),
+
             //Container(child: AnotherClass(),),
             //Container(child: AnswerTile(imageString: 'https://upload.wikimedia.org/wikipedia/en/c/c6/NeoTheMatrix.jpg'),)
             //Container(child: AnswerTileThing(),),
