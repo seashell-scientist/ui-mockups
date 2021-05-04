@@ -5,6 +5,7 @@ import './frame_12.dart';
 import './login_page.dart';
 import './library.dart';
 import './book_page.dart';
+import './book_end_page.dart';
 //import 'answer_tile_grid.dart';
 
 class FirstScreen extends StatelessWidget {
@@ -24,6 +25,15 @@ class FirstScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => BookPage()),
+                );
+              },
+            ),
+            ElevatedButton(
+              child: Text('Book End Page'),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => BookEndPage()),
                 );
               },
             ),

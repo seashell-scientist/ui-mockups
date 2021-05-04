@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 
 import './hoot_app_bar.dart';
-import './cloud_background.dart';
-import './Constants.dart' as Constants;
 import './route_testing.dart';
 import './Models/Book.dart';
 
-class BookPage extends StatelessWidget {
+class BookEndPage extends StatelessWidget {
   final Book sampleBook = Book(
     title: 'I Can Too: Dyslexic Heroes',
     author: 'James E Gentry',
@@ -18,11 +16,6 @@ class BookPage extends StatelessWidget {
     coverUrl:
         'https://firebasestorage.googleapis.com/v0/b/gentry-publishing-app.appspot.com/o/books%2FI%20Can%20Too%20-%20Dyslexic%20Heroes_1599163253736%2Fcover_image.png?alt=media&token=a00b80bf-e404-4c40-bd2a-600fbca81780',
   );
-  //temp
-  final String ipsum =
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vel pretium lectus quam id leo in vitae turpis. Sollicitudin ac orci phasellus egestas tellus rutrum tellus pellentesque eu. Neque sodales ut etiam sit. Quam pellentesque nec nam aliquam. Vulputate sapien nec sagittis aliquam malesuada bibendum. Justo donec enim diam vulputate ut pharetra sit amet aliquam. Dictum fusce ut placerat orci nulla pellentesque. Porttitor rhoncus dolor purus non enim praesent elementum facilisis. Adipiscing at in tellus integer feugiat scelerisque varius. Consequat id porta nibh venenatis cras sed felis eget. Sed felis eget velit aliquet sagittis id consectetur purus ut.';
-  final String image1 =
-      'https://firebasestorage.googleapis.com/v0/b/gentry-publishing-app.appspot.com/o/books%2FI%20Can%20Too%20-%20Dyslexic%20Heroes_1599163253736%2FpageImages%2F2.png?alt=media&token=f551b7b7-d2e2-4be6-b813-c2b99b7fec30';
   @override
   Widget build(BuildContext context) {
     double screen_width = MediaQuery.of(context).size.width;
@@ -31,37 +24,73 @@ class BookPage extends StatelessWidget {
       home: Scaffold(
           appBar: HootAppBar(),
           bottomNavigationBar: PageBar(),
-          body: Container(
-            child: LayoutGrid(
-              areas: '''
-        red blue
-        ''',
-              columnSizes: [
-                (screen_width * .55).px,
-                auto, //(screen_width *.45).px
-              ],
-              rowSizes: [auto],
+          body: Center(
+            child: SizedBox(width: screen_width *.4,
+              child: LayoutGrid(areas: 
+              '''
+              red red red 
+              red red red
+              blue  . green
+              
+              ''',
+              columnSizes: [auto, 1.fr, auto],
+              rowSizes: [auto, auto, auto],
               children: [
-                Container(
-                    color: Colors.white,
-                    alignment: Alignment.topLeft,
-                    child: Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Text(ipsum,
-                          textScaleFactor: 2,
-                          style: TextStyle(fontFamily: 'learner')),
-                    )).inGridArea('red'),
-                //Container(color: Colors.blue)
-                Container(color: Colors.white,
-                  child: Center(
-                    child: Container(
-                      child: Image.network(image1)
-                      .inGridArea('blue'),
-                    ),
-                  ),
-                ),
-              ],
-            ),
+                Container(child: Center(
+                  child: ClipRRect(
+                              borderRadius: BorderRadius.circular(
+                                  Constants.cornerRad),
+                              child: Image.network(sampleBook.coverUrl),
+                            ),
+                ),).inGridArea('red'),
+
+                Container(child: 
+                  ElevatedButton(
+      onPressed: () {Navigator.pop(context);},
+      style: ElevatedButton.styleFrom(
+        shape: new RoundedRectangleBorder(
+          borderRadius:
+              new BorderRadius.circular(Constants.cornerRad),
+        ),
+        elevation: 10,
+        primary: Colors.green,
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: Text(
+          '   Take Quiz!   ',
+          style: TextStyle(
+          fontWeight: FontWeight.bold,
+          ),
+          textScaleFactor: 1.5,
+        ),
+      ),
+      )
+                ).inGridArea('blue'),
+                Container(child: 
+                ElevatedButton(
+      onPressed: () {Navigator.pop(context);},
+      style: ElevatedButton.styleFrom(
+        shape: new RoundedRectangleBorder(
+          borderRadius:
+              new BorderRadius.circular(Constants.cornerRad),
+        ),
+        elevation: 10,
+        primary: Colors.green,
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: Text(
+          '     Finish!     ',
+          style: TextStyle(
+          fontWeight: FontWeight.bold,
+          ),
+          textScaleFactor: 1.5,
+        ),
+      ),
+      )).inGridArea('green'),
+              ],),
+            )
           )),
     );
   }
@@ -115,7 +144,7 @@ class PageBar extends StatelessWidget {
                       .push(MaterialPageRoute(builder: (_) => FirstScreen()));
                 }),
           ),
-          SizedBox(width: screen_width * .3),
+          /*SizedBox(width: screen_width * .3),
           Padding(
             padding: const EdgeInsets.all(4.0),
             child: ElevatedButton(
@@ -154,57 +183,22 @@ class PageBar extends StatelessWidget {
                 print('next page pressed');
               },
             ),
-          ),
+          ), */
         ],
       ),
-
-      /*
-      child: LayoutGrid(
-        areas: 
-        '''
-        .  red . blue . green . yellow  .
-        ''',
-        columnSizes: [
-          (screen_width * .01).px,
-          (screen_width * .1).px,
-          (screen_width * .01).px, 
-          (screen_width * .1).px,
-          auto,
-          (screen_width * .1).px,
-          auto, 
-          (screen_width * .1).px,
-          (screen_width * .01).px,
-        ],
-        rowSizes:[ (screen_height * .04).px
-        ],
-        children: [
-          ElevatedButton(
-              child: Container(
-                child: Row(children: [
-                  Icon(Icons.arrow_back), 
-                  Text('Previous')
-                ],),
-              ),
-              onPressed: () {},
-            ).inGridArea('red'),
-          ElevatedButton(
-              child: Text('Book Details Button'),
-              onPressed: () {},
-            ).inGridArea('blue'),
-          ElevatedButton(
-              child: Text('Book Details Button'),
-              onPressed: () {},
-            ).inGridArea('green'),
-          ElevatedButton(
-              child: Text('Book Details Button'),
-              onPressed: () {},
-            ).inGridArea('yellow'),
-        ],
-      ),
-    */
     );
   }
 
   @override
   Size get preferredSize => Size(double.infinity, kToolbarHeight);
+}
+
+
+class Constants {
+  static const double mainBoxHeight = 500;
+  static const double mainBoxWidth = 1000;
+  static const double textSize1 = 38;
+  static const double textSize2 = 24;
+  static const double textSize3 = 12;
+  static const double cornerRad = 40;
 }
