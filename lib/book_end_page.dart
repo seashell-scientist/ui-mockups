@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
+import 'package:page11/library.dart';
 
 import './hoot_app_bar.dart';
 import './route_testing.dart';
 import './Models/Book.dart';
+import './frame_12.dart';
 
 class BookEndPage extends StatelessWidget {
   final Book sampleBook = Book(
@@ -25,9 +27,10 @@ class BookEndPage extends StatelessWidget {
           appBar: HootAppBar(),
           bottomNavigationBar: PageBar(),
           body: Center(
-            child: SizedBox(width: screen_width *.4,
-              child: LayoutGrid(areas: 
-              '''
+              child: SizedBox(
+            width: screen_width * .4,
+            child: LayoutGrid(
+              areas: '''
               red red red 
               red red red
               blue  . green
@@ -36,62 +39,72 @@ class BookEndPage extends StatelessWidget {
               columnSizes: [auto, 1.fr, auto],
               rowSizes: [auto, auto, auto],
               children: [
-                Container(child: Center(
-                  child: ClipRRect(
-                              borderRadius: BorderRadius.circular(
-                                  Constants.cornerRad),
-                              child: Image.network(sampleBook.coverUrl),
-                            ),
-                ),).inGridArea('red'),
-
-                Container(child: 
-                  ElevatedButton(
-      onPressed: () {Navigator.pop(context);},
-      style: ElevatedButton.styleFrom(
-        shape: new RoundedRectangleBorder(
-          borderRadius:
-              new BorderRadius.circular(Constants.cornerRad),
-        ),
-        elevation: 10,
-        primary: Colors.green,
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: Text(
-          '   Take Quiz!   ',
-          style: TextStyle(
-          fontWeight: FontWeight.bold,
-          ),
-          textScaleFactor: 1.5,
-        ),
-      ),
-      )
-                ).inGridArea('blue'),
-                Container(child: 
-                ElevatedButton(
-      onPressed: () {Navigator.pop(context);},
-      style: ElevatedButton.styleFrom(
-        shape: new RoundedRectangleBorder(
-          borderRadius:
-              new BorderRadius.circular(Constants.cornerRad),
-        ),
-        elevation: 10,
-        primary: Colors.green,
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: Text(
-          '     Finish!     ',
-          style: TextStyle(
-          fontWeight: FontWeight.bold,
-          ),
-          textScaleFactor: 1.5,
-        ),
-      ),
-      )).inGridArea('green'),
-              ],),
-            )
-          )),
+                Container(
+                  child: Center(
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(Constants.cornerRad),
+                      child: Image.network(sampleBook.coverUrl),
+                    ),
+                  ),
+                ).inGridArea('red'),
+                Container(
+                    child: ElevatedButton(
+                  onPressed: () {
+                    //Navigator.pop(context);
+                    Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Frame12()),
+                );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    shape: new RoundedRectangleBorder(
+                      borderRadius:
+                          new BorderRadius.circular(Constants.cornerRad),
+                    ),
+                    elevation: 10,
+                    primary: Colors.green,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Text(
+                      '   Take Quiz!   ',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                      textScaleFactor: 1.5,
+                    ),
+                  ),
+                )).inGridArea('blue'),
+                Container(
+                    child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => LibraryPage()),
+                );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    shape: new RoundedRectangleBorder(
+                      borderRadius:
+                          new BorderRadius.circular(Constants.cornerRad),
+                    ),
+                    elevation: 10,
+                    primary: Colors.green,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Text(
+                      '     Finish!     ',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                      textScaleFactor: 1.5,
+                    ),
+                  ),
+                )).inGridArea('green'),
+              ],
+            ),
+          ))),
     );
   }
 }
@@ -192,7 +205,6 @@ class PageBar extends StatelessWidget {
   @override
   Size get preferredSize => Size(double.infinity, kToolbarHeight);
 }
-
 
 class Constants {
   static const double mainBoxHeight = 500;

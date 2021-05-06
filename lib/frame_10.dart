@@ -4,6 +4,7 @@ import './cloud_background.dart';
 import './Constants.dart' as Constants;
 import './Models/Book.dart';
 import './route_testing.dart';
+import './book_page.dart';
 
 class Frame10 extends StatelessWidget {
   final Book book = Book(
@@ -166,7 +167,7 @@ class _NamedButtonState extends State<NamedButton> {
         //Navigator.pop(context);
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => FirstScreen()),
+          MaterialPageRoute(builder: (context) => BookPage()),
         );
       },
       style: ElevatedButton.styleFrom(
