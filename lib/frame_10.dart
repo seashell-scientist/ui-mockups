@@ -3,6 +3,7 @@ import './hoot_app_bar.dart';
 import './cloud_background.dart';
 import './Constants.dart' as Constants;
 import './Models/Book.dart';
+import './route_testing.dart';
 
 class Frame10 extends StatelessWidget {
   final Book book = Book(
@@ -128,7 +129,9 @@ class Frame10 extends StatelessWidget {
                                       ],
                                     ),
                                     Spacer(),
-                                    NamedButton(buttonName: 'Read Now',),
+                                    NamedButton(
+                                      buttonName: 'Read Now',
+                                    ),
                                   ],
                                 ),
                               ],
@@ -159,7 +162,13 @@ class _NamedButtonState extends State<NamedButton> {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {Navigator.pop(context);},
+      onPressed: () {
+        //Navigator.pop(context);
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => FirstScreen()),
+        );
+      },
       style: ElevatedButton.styleFrom(
         shape: new RoundedRectangleBorder(
           borderRadius:
@@ -181,4 +190,3 @@ class _NamedButtonState extends State<NamedButton> {
     );
   }
 }
-

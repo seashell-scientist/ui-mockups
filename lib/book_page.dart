@@ -157,51 +157,6 @@ class PageBar extends StatelessWidget {
           ),
         ],
       ),
-
-      /*
-      child: LayoutGrid(
-        areas: 
-        '''
-        .  red . blue . green . yellow  .
-        ''',
-        columnSizes: [
-          (screen_width * .01).px,
-          (screen_width * .1).px,
-          (screen_width * .01).px, 
-          (screen_width * .1).px,
-          auto,
-          (screen_width * .1).px,
-          auto, 
-          (screen_width * .1).px,
-          (screen_width * .01).px,
-        ],
-        rowSizes:[ (screen_height * .04).px
-        ],
-        children: [
-          ElevatedButton(
-              child: Container(
-                child: Row(children: [
-                  Icon(Icons.arrow_back), 
-                  Text('Previous')
-                ],),
-              ),
-              onPressed: () {},
-            ).inGridArea('red'),
-          ElevatedButton(
-              child: Text('Book Details Button'),
-              onPressed: () {},
-            ).inGridArea('blue'),
-          ElevatedButton(
-              child: Text('Book Details Button'),
-              onPressed: () {},
-            ).inGridArea('green'),
-          ElevatedButton(
-              child: Text('Book Details Button'),
-              onPressed: () {},
-            ).inGridArea('yellow'),
-        ],
-      ),
-    */
     );
   }
 
